@@ -7,6 +7,21 @@ from zhdate import ZhDate
 import sys
 import os
 
+def get_days():
+    global getday
+    today=datetime.now()
+    input_date = datetime.strptime("2024-10-1", '%Y-%m-%d')
+    # 计算时间差
+    delta = input_date-today
+    # 获取隔天数
+    dates = delta.days
+    if dates > 0:
+        getday = "距离国庆见面倒计时{}天".format(dates)
+    if dates == 0:
+        getday = "马上就要见面啦"
+    if dates < 0:
+        getday = "在一起啦，贴贴"
+    return getday
 
 def get_color():
     # 获取随机颜色
@@ -166,6 +181,10 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "value": love_days,
                 "color": get_color()
             },
+            "days": {
+                "value": get_days(),
+                "color": get_color()
+            },
             "note_en": {
                 "value": note_en,
                 "color": get_color()
@@ -185,6 +204,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
             birthday_data = "距离{}的生日还有{}天".format(value["name"], birth_day)
         # 将生日数据插入data
         data["data"][key] = {"value": birthday_data, "color": "#FF0000"}
+
     headers = {
         'Content-Type': 'application/json',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
