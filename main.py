@@ -10,7 +10,7 @@ import os
 def get_days():
     global getday
     today=datetime.now()
-    input_date = datetime.strptime("2024-10-1", '%Y-%m-%d')
+    input_date = datetime.strptime("2025-2-14", '%Y-%m-%d')
     # 计算时间差
     delta = input_date-today
     # 获取隔天数
