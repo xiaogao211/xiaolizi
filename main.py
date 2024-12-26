@@ -10,13 +10,13 @@ import os
 def get_days():
     global getday
     today=datetime.now()
-    input_date = datetime.strptime("2025-2-14", '%Y-%m-%d')
+    input_date = datetime.strptime("2025-1-18", '%Y-%m-%d')
     # 计算时间差
     delta = input_date-today
     # 获取隔天数
     dates = delta.days
     if dates > 0:
-        getday = "距离国庆见面倒计时{}天".format(dates)
+        getday = "距离寒假见面倒计时{}天".format(dates)
     if dates == 0:
         getday = "马上就要见面啦"
     if dates < 0:
